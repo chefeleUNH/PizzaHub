@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity() {
                 model: Pizzeria
             ) {
                 holder.txtName.text = model.name
-                holder.imgLogo.setImageResource(model.logo)
+                val resID = resources.getIdentifier(model.logo, "drawable", packageName)
+                holder.imgLogo.setImageResource(resID)
             }
 
             override fun onCreateViewHolder(group: ViewGroup, i: Int): PizzeriaViewHolder {
