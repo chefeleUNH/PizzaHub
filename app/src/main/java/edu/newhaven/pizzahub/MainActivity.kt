@@ -13,7 +13,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity() {
 
     private val TAG = javaClass.name
@@ -31,18 +30,9 @@ class MainActivity : AppCompatActivity() {
             .orderBy("name")
             .limit(50)
 
-        Log.i(TAG, "query: $query")
-
-        // Configure recycler adapter options:
-        //  * query is the Query object defined above.
-        //  * Chat.class instructs the adapter to convert each DocumentSnapshot to a Chat object
-
         val options: FirestoreRecyclerOptions<Pizzeria> = FirestoreRecyclerOptions.Builder<Pizzeria>()
             .setQuery(query, Pizzeria::class.java)
             .build()
-
-        Log.i(TAG, "options: $options")
-
 
         adapter = object : FirestoreRecyclerAdapter<Pizzeria, PizzeriaViewHolder>(options) {
 
@@ -51,7 +41,8 @@ class MainActivity : AppCompatActivity() {
                 position: Int,
                 model: Pizzeria
             ) {
-                holder.name.text = model.name
+                holder.txtName.text = model.name
+                holder.imgLogo.setImageResource(model.logo)
             }
 
             override fun onCreateViewHolder(group: ViewGroup, i: Int): PizzeriaViewHolder {
@@ -70,25 +61,17 @@ class MainActivity : AppCompatActivity() {
                 Log.e("error", e!!.message)
             }
         }
-
-        Log.i(TAG, "adapter: $adapter")
-
         mRecyclerView.adapter = adapter
         mRecyclerView.layoutManager = LinearLayoutManager(this)
-
-        Log.i(TAG, "$mRecyclerView")
     }
 
     override fun onStart() {
         super.onStart()
         adapter?.startListening()
-        Log.i(TAG, "start listening")
     }
 
     override fun onStop() {
         super.onStop()
         adapter?.stopListening()
-        Log.i(TAG, "stop listening")
-
     }
 }
