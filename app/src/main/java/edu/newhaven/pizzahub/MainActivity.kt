@@ -62,8 +62,8 @@ class MainActivity : AppCompatActivity() {
                 Log.e("error", e!!.message)
             }
         }
-        mRecyclerView.adapter = adapter
-        mRecyclerView.layoutManager = LinearLayoutManager(this)
+        rv_pizzeria_list.adapter = adapter
+        rv_pizzeria_list.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onStart() {
