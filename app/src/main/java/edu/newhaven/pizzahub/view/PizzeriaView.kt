@@ -1,11 +1,12 @@
-package edu.newhaven.pizzahub
+package edu.newhaven.pizzahub.view
 
 import android.view.View
 import android.widget.TextView
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import edu.newhaven.pizzahub.R
 
-class PizzeriaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class PizzeriaView(view: View) : RecyclerView.ViewHolder(view) {
     var ivLogo: ImageView = view.findViewById(R.id.iv_logo)
     var tvName: TextView = view.findViewById(R.id.tv_name)
     var tvDistance: TextView = view.findViewById(R.id.tv_distance)

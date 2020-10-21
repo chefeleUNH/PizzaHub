@@ -1,16 +1,13 @@
 package edu.newhaven.pizzahub
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Query
+import edu.newhaven.pizzahub.controller.PizzeriaAdapter
+import edu.newhaven.pizzahub.model.Pizzeria
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
 
-    private var adapter : FirestoreRecyclerAdapter<Pizzeria, PizzeriaViewHolder>? = null
+    private lateinit var pizzeriaAdapter: PizzeriaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,46 +31,19 @@ class MainActivity : AppCompatActivity() {
             .setQuery(query, Pizzeria::class.java)
             .build()
 
-        adapter = object : FirestoreRecyclerAdapter<Pizzeria, PizzeriaViewHolder>(options) {
+        pizzeriaAdapter = PizzeriaAdapter(options, resources)
 
-            override fun onBindViewHolder(
-                holder: PizzeriaViewHolder,
-                position: Int,
-                model: Pizzeria
-            ) {
-                val resID = resources.getIdentifier(model.logo, "drawable", packageName)
-                holder.ivLogo.setImageResource(resID)
-                holder.tvName.text = model.name
-                holder.tvReadyIn.text = "ready in ${model.ready_in} minutes"
-            }
-
-            override fun onCreateViewHolder(group: ViewGroup, i: Int): PizzeriaViewHolder {
-                // Create a new instance of the ViewHolder, in this case we are using a custom
-                // layout called R.layout.view_holder for each item
-                val view = LayoutInflater.from(group.context)
-                    .inflate(R.layout.view_holder, group, false)
-                return PizzeriaViewHolder(view)
-            }
-
-            override fun getItemCount(): Int {
-                return super.getItemCount()
-            }
-
-            override fun onError(e: FirebaseFirestoreException) {
-                Log.e("error", e!!.message)
-            }
-        }
-        rv_pizzeria_list.adapter = adapter
-        rv_pizzeria_list.layoutManager = LinearLayoutManager(this)
+        rv_pizzeria_view.adapter = pizzeriaAdapter
+        rv_pizzeria_view.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onStart() {
         super.onStart()
-        adapter?.startListening()
+        pizzeriaAdapter.startListening()
     }
 
     override fun onStop() {
         super.onStop()
-        adapter?.stopListening()
+        pizzeriaAdapter.stopListening()
     }
 }
