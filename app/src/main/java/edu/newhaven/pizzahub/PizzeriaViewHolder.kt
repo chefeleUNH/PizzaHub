@@ -6,6 +6,8 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 
 class PizzeriaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    var imgLogo: ImageView = view.findViewById(R.id.iv_logo)
-    var txtName: TextView = view.findViewById(R.id.tv_name)
+    var ivLogo: ImageView = view.findViewById(R.id.iv_logo)
+    var tvName: TextView = view.findViewById(R.id.tv_name)
+    var tvDistance: TextView = view.findViewById(R.id.tv_distance)
+    var tvReadyIn: TextView = view.findViewById(R.id.tv_ready_in)
 }

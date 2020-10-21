@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val query: Query = db
             .collection("pizzerias")
-            .orderBy("name")
+            .orderBy("ready_in")
             .limit(50)
 
         val options: FirestoreRecyclerOptions<Pizzeria> = FirestoreRecyclerOptions.Builder<Pizzeria>()
@@ -41,9 +41,10 @@ class MainActivity : AppCompatActivity() {
                 position: Int,
                 model: Pizzeria
             ) {
-                holder.txtName.text = model.name
                 val resID = resources.getIdentifier(model.logo, "drawable", packageName)
-                holder.imgLogo.setImageResource(resID)
+                holder.ivLogo.setImageResource(resID)
+                holder.tvName.text = model.name
+                holder.tvReadyIn.text = "ready in ${model.ready_in} minutes"
             }
 
             override fun onCreateViewHolder(group: ViewGroup, i: Int): PizzeriaViewHolder {
