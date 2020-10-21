@@ -24,6 +24,7 @@ class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>,
         holder.ivLogo.setImageResource(resID)
         holder.tvName.text = model.name
         holder.tvReadyIn.text = "ready in ${model.ready_in} minutes"
+        holder.tvDistance.text = "${model.distance} miles"
     }
 
 }
