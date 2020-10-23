@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import edu.newhaven.pizzahub.view.PizzeriaView
 import edu.newhaven.pizzahub.R
 import edu.newhaven.pizzahub.model.Pizzeria
+import edu.newhaven.pizzahub.view.PizzeriaView
 
 class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>,
                       private var resources: Resources) :
@@ -26,5 +26,4 @@ class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>,
         holder.tvReadyIn.text = "ready in ${model.ready_in} minutes"
         holder.tvDistance.text = "${model.distance} miles"
     }
-
 }
