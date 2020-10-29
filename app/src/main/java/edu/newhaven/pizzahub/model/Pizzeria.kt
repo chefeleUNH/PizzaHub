@@ -1,8 +1,11 @@
 package edu.newhaven.pizzahub.model
 
-import kotlin.random.Random
-
-data class Pizzeria(val logo: String = "", val name: String = "", val ready_in: Int = 0) {
-    //TODO: replace this with actual GPS distance
-    val distance = Random.nextInt(1, 20) // temp. placeholder
+data class Pizzeria(
+    val logo: String = "",
+    val name: String = "",
+    val ready_in: Int = 0,
+    val lat: Double = 0.0,
+    val lon: Double = 0.0
+) {
+    var distance: String = "0.0"
 }
