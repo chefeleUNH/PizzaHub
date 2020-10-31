@@ -30,7 +30,7 @@ class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>,
         holder.ivLogo.setImageResource(resID)
         holder.tvName.text = model.name
         holder.tvReadyIn.text = "ready in ${model.ready_in} minutes"
-        holder.tvDistance.text = "${model.distance} miles"
+        holder.tvDistance.text = model.distance
     }
 
     fun updateAllDistances(loc: Location?) {
@@ -43,7 +43,7 @@ class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>,
             if (distMiles != null) {
                 val df = DecimalFormat("#.#")
                 df.roundingMode = RoundingMode.CEILING
-                it.distance = df.format(distMiles) // rounded to 1 decimal place
+                it.distance = "${df.format(distMiles)} miles" // rounded to 1 decimal place
             }
         }
         notifyDataSetChanged()

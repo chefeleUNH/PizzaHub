@@ -7,5 +7,5 @@ data class Pizzeria(
     val lat: Double = 0.0,
     val lon: Double = 0.0
 ) {
-    var distance: String = "0.0"
+    var distance: String = ""
 }

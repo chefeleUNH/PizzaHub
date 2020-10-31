@@ -16,7 +16,7 @@ import edu.newhaven.pizzahub.controller.PizzeriaAdapter
 import edu.newhaven.pizzahub.model.Pizzeria
 import kotlinx.android.synthetic.main.activity_main.*
 
-const val PERMISSION_REQUEST_CODE = 0
+const val FINE_LOCATION_REQUEST_CODE = 0
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +35,11 @@ class MainActivity : AppCompatActivity() {
             .orderBy("ready_in")
             .limit(50)
 
+        // add a listener to update the pizzeria distances when the snapshots are received
+        query.addSnapshotListener { _, _ ->
+            updateDistances()
+        }
+
         val options: FirestoreRecyclerOptions<Pizzeria> =
             FirestoreRecyclerOptions.Builder<Pizzeria>()
                 .setQuery(query, Pizzeria::class.java)
@@ -44,15 +49,6 @@ class MainActivity : AppCompatActivity() {
 
         rv_pizzeria_view.adapter = pizzeriaAdapter
         rv_pizzeria_view.layoutManager = LinearLayoutManager(this)
-
-        if (!hasFineLocationPermission()) {
-            requestPermissions()
-        }
-
-        btnUpdateDistances.setOnClickListener() {
-            updateDistances()
-        }
-
     }
 
     override fun onStart() {
@@ -66,20 +62,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateDistances() {
-        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener { loc: Location? ->
-                // Got last known location. In some rare situations this can be null.
-                Log.d(TAG, "Last known location is $loc")
-                pizzeriaAdapter.updateAllDistances(loc)
-            }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { loc: Location? ->
+                    pizzeriaAdapter.updateAllDistances(loc)
+                }
+        } else {
+            requestPermissions()
+        }
     }
-
-    private fun hasFineLocationPermission() =
-        ActivityCompat.checkSelfPermission(
-            this,
-            Manifest.permission.ACCESS_FINE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED
 
     private fun requestPermissions() {
         val permissionsToRequest = mutableListOf<String>()
@@ -88,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(
                 this,
                 permissionsToRequest.toTypedArray(),
-                PERMISSION_REQUEST_CODE
+                FINE_LOCATION_REQUEST_CODE
             )
         }
     }
@@ -99,16 +91,15 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         when (requestCode) {
-            PERMISSION_REQUEST_CODE -> {
+            FINE_LOCATION_REQUEST_CODE -> {
                 // If request is cancelled, the result arrays are empty.
                 if ((grantResults.isNotEmpty() &&
                             grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 ) {
-                    Log.d("PermissionsRequest", "Permission Granted for ${permissions[0]}")
+                    Log.d(TAG, "Permission Granted for ${permissions[0]}")
                     updateDistances()
-
                 } else {
-                    Log.d("PermissionsRequest", "Permission Denied")
+                    Log.d(TAG, "Permission Denied")
                 }
                 return
             }
