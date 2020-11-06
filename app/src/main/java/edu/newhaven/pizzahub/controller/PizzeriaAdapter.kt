@@ -1,8 +1,10 @@
 package edu.newhaven.pizzahub.controller
 
+import android.content.Context
 import android.location.Location
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.ktx.Firebase
@@ -14,7 +16,7 @@ import edu.newhaven.pizzahub.view.PizzeriaViewHolder
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>) :
+class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>, private val context: Context) :
     FirestoreRecyclerAdapter<Pizzeria, PizzeriaViewHolder>(options) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PizzeriaViewHolder {
@@ -24,9 +26,19 @@ class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>) :
     }
 
     override fun onBindViewHolder(holder: PizzeriaViewHolder, position: Int, model: Pizzeria) {
+        // create a spinny thing
+        val circularProgressDrawable = CircularProgressDrawable(context)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+
         // bind the pizzeria logo using the Glide generated API + Firebase UI Storage
         val storageReference = Firebase.storage.getReferenceFromUrl(model.logo)
-        GlideApp.with(holder.ivLogo).load(storageReference).into(holder.ivLogo)
+        GlideApp
+            .with(holder.ivLogo)
+            .load(storageReference)
+            .placeholder(circularProgressDrawable)
+            .into(holder.ivLogo)
 
         // bind everything else
         holder.tvName.text = model.name
