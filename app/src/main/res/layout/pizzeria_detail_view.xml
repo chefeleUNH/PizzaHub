@@ -7,21 +7,21 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/iv_pizzeria"
-        android:layout_width="265dp"
-        android:layout_height="172dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-    <TextView
-        android:id="@+id/tv_pizzeria_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/iv_detail_logo"
+        android:layout_width="205dp"
+        android:layout_height="205dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_pizzeria" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <TextView
+        android:id="@+id/tv_detail_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pizzeria"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintStart_toStartOf="@+id/iv_detail_logo"
+        app:layout_constraintTop_toBottomOf="@+id/iv_detail_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
