@@ -14,7 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import edu.newhaven.pizzahub.controller.PizzeriaAdapter
 import edu.newhaven.pizzahub.model.Pizzeria
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.pizzeria_list_view.*
 
 const val FINE_LOCATION_REQUEST_CODE = 0
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.pizzeria_list_view)
 
         val query: Query = db
             .collection("pizzerias")
