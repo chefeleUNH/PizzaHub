@@ -1,4 +1,4 @@
-package edu.newhaven.pizzahub
+package edu.newhaven.pizzahub.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -12,13 +12,14 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import edu.newhaven.pizzahub.R
 import edu.newhaven.pizzahub.controller.PizzeriaAdapter
 import edu.newhaven.pizzahub.model.Pizzeria
 import kotlinx.android.synthetic.main.pizzeria_list_view.*
 
 const val FINE_LOCATION_REQUEST_CODE = 0
 
-class MainActivity : AppCompatActivity() {
+class PizzeriaListActivity : AppCompatActivity() {
 
     private val TAG = javaClass.name
 
