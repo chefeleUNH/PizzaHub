@@ -18,8 +18,9 @@ class PizzeriaDetailActivity : AppCompatActivity() {
 
         val pizzeria = intent.getSerializableExtra("PIZZERIA") as? Pizzeria ?: return
 
-        // set the name
+        // set the detail view fields
         tv_detail_name.text = pizzeria.name
+        tv_detail_ready_in.text = "ready in ${pizzeria.ready_in} minutes"
 
         // create a spinny thing
         val circularProgressDrawable = CircularProgressDrawable(this)
