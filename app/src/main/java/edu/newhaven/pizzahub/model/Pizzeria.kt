@@ -9,5 +9,6 @@ data class Pizzeria(
     val lat: Double = 0.0,
     val lon: Double = 0.0
 ) : Serializable {
+    var id: String = ""
     var distance: String = ""
 }

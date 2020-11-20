@@ -55,6 +55,9 @@ class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>, private val c
         holder.tvName.text = model.name
         holder.tvReadyIn.text = "ready in ${model.ready_in} minutes"
         holder.tvDistance.text = model.distance
+
+        // set the ID field
+        model.id = snapshots.getSnapshot(position).id
     }
 
     fun updateAllDistances(loc: Location?) {

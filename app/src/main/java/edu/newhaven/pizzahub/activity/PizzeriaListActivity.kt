@@ -36,7 +36,7 @@ class PizzeriaListActivity : AppCompatActivity() {
             .orderBy("ready_in")
             .limit(50)
 
-        // add a listener to update the pizzeria distances when the snapshots are received
+        // add a listener to add supplemental data to the model when the snapshots are received
         query.addSnapshotListener { _, _ ->
             updateDistances()
         }
