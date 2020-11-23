@@ -18,7 +18,7 @@ import edu.newhaven.pizzahub.view.PizzeriaViewHolder
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>, private val context: Context,
+class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>,
                       private val onDataChanged: OnDataChanged) :
     FirestoreRecyclerAdapter<Pizzeria, PizzeriaViewHolder>(options) {
 
@@ -36,14 +36,14 @@ class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>, private val c
         // this will fire when the user clicks a row in the recycler view
         holder.itemView.setOnClickListener {
             // load the detail view
-            val intent = Intent(context, PizzeriaDetailActivity::class.java).apply {
+            val intent = Intent(holder.itemView.context, PizzeriaDetailActivity::class.java).apply {
                 putExtra("PIZZERIA", model)
             }
-            context.startActivity(intent)
+            holder.itemView.context.startActivity(intent)
         }
 
         // create a spinny thing
-        val circularProgressDrawable = CircularProgressDrawable(context)
+        val circularProgressDrawable = CircularProgressDrawable(holder.itemView.context)
         circularProgressDrawable.strokeWidth = 5f
         circularProgressDrawable.centerRadius = 30f
         circularProgressDrawable.start()

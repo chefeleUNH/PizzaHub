@@ -41,7 +41,7 @@ class PizzeriaListActivity : AppCompatActivity(), PizzeriaAdapter.OnDataChanged 
                 .setQuery(query, Pizzeria::class.java)
                 .build()
 
-        pizzeriaAdapter = PizzeriaAdapter(options, this, this)
+        pizzeriaAdapter = PizzeriaAdapter(options, this)
 
         rv_pizzeria_view.adapter = pizzeriaAdapter
         rv_pizzeria_view.layoutManager = LinearLayoutManager(this)

@@ -1,6 +1,5 @@
 package edu.newhaven.pizzahub.controller
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -13,7 +12,7 @@ import edu.newhaven.pizzahub.glide.GlideApp
 import edu.newhaven.pizzahub.model.MenuItem
 import edu.newhaven.pizzahub.view.MenuItemViewHolder
 
-class MenuItemAdapter(options: FirestoreRecyclerOptions<MenuItem>, private val context: Context) :
+class MenuItemAdapter(options: FirestoreRecyclerOptions<MenuItem>) :
     FirestoreRecyclerAdapter<MenuItem, MenuItemViewHolder>(options) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuItemViewHolder {
@@ -24,7 +23,7 @@ class MenuItemAdapter(options: FirestoreRecyclerOptions<MenuItem>, private val c
 
     override fun onBindViewHolder(holder: MenuItemViewHolder, position: Int, model: MenuItem) {
         // create a spinny thing
-        val circularProgressDrawable = CircularProgressDrawable(context)
+        val circularProgressDrawable = CircularProgressDrawable(holder.itemView.context)
         circularProgressDrawable.strokeWidth = 5f
         circularProgressDrawable.centerRadius = 30f
         circularProgressDrawable.start()

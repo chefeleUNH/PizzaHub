@@ -57,7 +57,7 @@ class PizzeriaDetailActivity : AppCompatActivity() {
                 .setQuery(query, MenuItem::class.java)
                 .build()
 
-        menuItemAdapter = MenuItemAdapter(options, this)
+        menuItemAdapter = MenuItemAdapter(options)
 
         rv_menu.adapter = menuItemAdapter
         rv_menu.layoutManager = LinearLayoutManager(this)
