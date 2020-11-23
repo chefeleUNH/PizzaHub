@@ -11,12 +11,10 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import edu.newhaven.pizzahub.R
 import edu.newhaven.pizzahub.controller.MenuItemAdapter
-import edu.newhaven.pizzahub.controller.PizzeriaAdapter
 import edu.newhaven.pizzahub.glide.GlideApp
 import edu.newhaven.pizzahub.model.MenuItem
 import edu.newhaven.pizzahub.model.Pizzeria
 import kotlinx.android.synthetic.main.pizzeria_detail_view.*
-import kotlinx.android.synthetic.main.pizzeria_list_view.*
 
 class PizzeriaDetailActivity : AppCompatActivity() {
 
