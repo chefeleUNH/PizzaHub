@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.pizzeria_list_view.*
 
 const val FINE_LOCATION_REQUEST_CODE = 0
 
-class PizzeriaListActivity : AppCompatActivity() {
+class PizzeriaListActivity : AppCompatActivity(), PizzeriaAdapter.OnDataChanged {
 
     private val TAG = javaClass.name
 
@@ -36,17 +36,12 @@ class PizzeriaListActivity : AppCompatActivity() {
             .orderBy("ready_in")
             .limit(50)
 
-        // add a listener to add supplemental data to the model when the snapshots are received
-        query.addSnapshotListener { _, _ ->
-            updateDistances()
-        }
-
         val options: FirestoreRecyclerOptions<Pizzeria> =
             FirestoreRecyclerOptions.Builder<Pizzeria>()
                 .setQuery(query, Pizzeria::class.java)
                 .build()
 
-        pizzeriaAdapter = PizzeriaAdapter(options, this)
+        pizzeriaAdapter = PizzeriaAdapter(options, this, this)
 
         rv_pizzeria_view.adapter = pizzeriaAdapter
         rv_pizzeria_view.layoutManager = LinearLayoutManager(this)
@@ -105,5 +100,9 @@ class PizzeriaListActivity : AppCompatActivity() {
                 return
             }
         }
+    }
+
+    override fun dataChanged() {
+        updateDistances()
     }
 }

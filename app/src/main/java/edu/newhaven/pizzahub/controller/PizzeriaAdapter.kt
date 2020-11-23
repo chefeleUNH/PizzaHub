@@ -18,8 +18,13 @@ import edu.newhaven.pizzahub.view.PizzeriaViewHolder
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>, private val context: Context) :
+class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>, private val context: Context,
+                      private val onDataChanged: OnDataChanged) :
     FirestoreRecyclerAdapter<Pizzeria, PizzeriaViewHolder>(options) {
+
+    interface OnDataChanged {
+        fun dataChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PizzeriaViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -58,6 +63,11 @@ class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>, private val c
 
         // set the ID field
         model.id = snapshots.getSnapshot(position).id
+    }
+
+    override fun onDataChanged() {
+        super.onDataChanged()
+        onDataChanged.dataChanged()
     }
 
     fun updateAllDistances(loc: Location?) {
