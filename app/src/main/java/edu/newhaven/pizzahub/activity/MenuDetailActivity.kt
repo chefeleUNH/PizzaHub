@@ -10,6 +10,7 @@ import com.google.firebase.storage.ktx.storage
 import edu.newhaven.pizzahub.R
 import edu.newhaven.pizzahub.glide.GlideApp
 import edu.newhaven.pizzahub.model.MenuItem
+import edu.newhaven.pizzahub.model.ShoppingCart
 import kotlinx.android.synthetic.main.menu_detail_view.*
 
 class MenuDetailActivity : AppCompatActivity() {
@@ -37,6 +38,7 @@ class MenuDetailActivity : AppCompatActivity() {
             .into(iv_detail_photo)
 
         btn_addToCart.setOnClickListener {
+            ShoppingCart.items.add(menuItem)
             val toast = Toast.makeText(this, "Added to cart", Toast.LENGTH_LONG)
             toast.show()
         }
