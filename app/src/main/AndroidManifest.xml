@@ -18,8 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PizzeriaDetailActivity"
-            android:parentActivityName=".activity.PizzeriaListActivity"/>
+        <activity android:name=".activity.PizzeriaDetailActivity"/>
         <activity android:name=".activity.MenuDetailActivity"/>
     </application>
 
