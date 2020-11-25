@@ -2,6 +2,7 @@ package edu.newhaven.pizzahub.activity
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.google.firebase.ktx.Firebase
@@ -34,5 +35,10 @@ class MenuDetailActivity : AppCompatActivity() {
             .load(storageReference)
             .placeholder(circularProgressDrawable)
             .into(iv_detail_photo)
+
+        btn_addToCart.setOnClickListener {
+            val toast = Toast.makeText(this, "Added to cart", Toast.LENGTH_LONG)
+            toast.show()
+        }
     }
 }
