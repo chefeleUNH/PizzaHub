@@ -10,7 +10,6 @@ import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.android.gms.location.LocationServices
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import edu.newhaven.pizzahub.R
@@ -47,11 +46,11 @@ class PizzeriaListActivity : AppCompatActivity(), PizzeriaAdapter.OnDataChanged 
         rv_pizzeria_view.adapter = pizzeriaAdapter
         rv_pizzeria_view.layoutManager = LinearLayoutManager(this)
 
-        // create the tab bar
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when(item.itemId) {
+        // add behavior to bottom nav bar
+        bottom_navigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
                 R.id.item1 -> {
-                    // Respond to navigation item 1 click
+                    // Do nothing as this activity is already running
                     true
                 }
                 R.id.item2 -> {

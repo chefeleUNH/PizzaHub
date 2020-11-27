@@ -1,5 +1,6 @@
 package edu.newhaven.pizzahub.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -60,6 +61,23 @@ class PizzeriaDetailActivity : AppCompatActivity() {
 
         rv_menu.adapter = menuItemAdapter
         rv_menu.layoutManager = LinearLayoutManager(this)
+
+        // add behavior to bottom nav bar
+        bottom_navigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.item1 -> {
+                    // Respond to navigation item 1 click
+                    val intent = Intent(this, PizzeriaListActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.item2 -> {
+                    // Respond to navigation item 2 click
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onStart() {

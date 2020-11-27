@@ -1,7 +1,7 @@
 package edu.newhaven.pizzahub.activity
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -41,6 +41,23 @@ class MenuDetailActivity : AppCompatActivity() {
             ShoppingCart.items.add(menuItem)
             val toast = Toast.makeText(this, "Added to cart", Toast.LENGTH_LONG)
             toast.show()
+        }
+
+        // add behavior to bottom nav bar
+        bottom_navigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.item1 -> {
+                    // Respond to navigation item 1 click
+                    val intent = Intent(this, PizzeriaListActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.item2 -> {
+                    // Respond to navigation item 2 click
+                    true
+                }
+                else -> false
+            }
         }
     }
 }
