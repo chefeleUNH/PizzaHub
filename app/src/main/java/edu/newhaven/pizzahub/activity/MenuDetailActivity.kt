@@ -18,7 +18,11 @@ class MenuDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.menu_detail_view)
 
+        // get the menu item from the intent
         val menuItem = intent.getSerializableExtra("MENU_ITEM") as? MenuItem ?: return
+
+        // set the support action bar title
+        supportActionBar?.title = menuItem.name
 
         // set the detail view fields
         tv_detail_menu_name.text = menuItem.name

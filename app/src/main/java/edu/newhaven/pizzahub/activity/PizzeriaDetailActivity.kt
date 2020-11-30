@@ -27,7 +27,11 @@ class PizzeriaDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pizzeria_detail_view)
 
+        // get the pizzeria from the intent
         val pizzeria = intent.getSerializableExtra("PIZZERIA") as? Pizzeria ?: return
+
+        // set the support action bar title
+        supportActionBar?.title = pizzeria.name
 
         // set the detail view fields
         tv_detail_ready_in.text = "ready in ${pizzeria.ready_in} minutes"

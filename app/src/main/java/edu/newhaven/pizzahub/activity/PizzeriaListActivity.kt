@@ -23,6 +23,8 @@ class PizzeriaListActivity : AppCompatActivity(), PizzeriaAdapter.OnDataChanged 
 
     private val TAG = javaClass.name
 
+    private val title = "Pizzerias"
+
     private val db = FirebaseFirestore.getInstance()
 
     private lateinit var pizzeriaAdapter: PizzeriaAdapter
@@ -30,6 +32,9 @@ class PizzeriaListActivity : AppCompatActivity(), PizzeriaAdapter.OnDataChanged 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pizzeria_list_view)
+
+        // set the support action bar title
+        supportActionBar?.title = title
 
         val query: Query = db
             .collection("pizzerias")
