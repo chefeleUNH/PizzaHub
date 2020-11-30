@@ -77,6 +77,8 @@ class PizzeriaDetailActivity : AppCompatActivity() {
                 }
                 R.id.item2 -> {
                     // Respond to navigation item 2 click
+                    val intent = Intent(this, ShoppingCartActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 else -> false

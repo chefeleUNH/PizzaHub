@@ -1,6 +1,7 @@
 package edu.newhaven.pizzahub.activity
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -60,6 +61,8 @@ class PizzeriaListActivity : AppCompatActivity(), PizzeriaAdapter.OnDataChanged 
                 }
                 R.id.item2 -> {
                     // Respond to navigation item 2 click
+                    val intent = Intent(this, ShoppingCartActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 else -> false

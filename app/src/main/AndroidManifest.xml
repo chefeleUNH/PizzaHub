@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.newhaven.pizzahub">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -18,8 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PizzeriaDetailActivity"/>
-        <activity android:name=".activity.MenuDetailActivity"/>
+        <activity android:name=".activity.PizzeriaDetailActivity" />
+        <activity android:name=".activity.MenuDetailActivity" />
+        <activity android:name=".activity.ShoppingCartActivity" />
     </application>
 
 </manifest>

@@ -41,7 +41,7 @@ class MenuDetailActivity : AppCompatActivity() {
             .placeholder(circularProgressDrawable)
             .into(iv_detail_photo)
 
-        btn_addToCart.setOnClickListener {
+        btn_add_to_cart.setOnClickListener {
             ShoppingCart.items.add(menuItem)
             val toast = Toast.makeText(this, "Added to cart", Toast.LENGTH_LONG)
             toast.show()
@@ -58,6 +58,8 @@ class MenuDetailActivity : AppCompatActivity() {
                 }
                 R.id.item2 -> {
                     // Respond to navigation item 2 click
+                    val intent = Intent(this, ShoppingCartActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 else -> false
