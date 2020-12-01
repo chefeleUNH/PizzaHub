@@ -20,8 +20,15 @@ class ShoppingCartActivity : AppCompatActivity() {
         // set the support action bar title
         supportActionBar?.title = title
 
+        // configure the recycler view
         rv_cart.adapter = ShoppingCartAdapter(ShoppingCart.items)
         rv_cart.layoutManager = LinearLayoutManager(this)
+
+        // set the onClick
+        btn_place_order.setOnClickListener {
+            val intent = Intent(this, CheckoutActivity::class.java)
+            startActivity(intent)
+        }
 
         // add behavior to bottom nav bar
         bottom_navigation.setOnNavigationItemSelectedListener { item ->

@@ -21,6 +21,7 @@
         <activity android:name=".activity.PizzeriaDetailActivity" />
         <activity android:name=".activity.MenuDetailActivity" />
         <activity android:name=".activity.ShoppingCartActivity" />
+        <activity android:name=".activity.CheckoutActivity" />
     </application>
 
 </manifest>
