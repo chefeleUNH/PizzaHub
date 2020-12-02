@@ -7,7 +7,6 @@ import android.widget.Toast
 import edu.newhaven.pizzahub.R
 import kotlinx.android.synthetic.main.activity_checkout.*
 import kotlinx.android.synthetic.main.activity_checkout.bottom_navigation
-import kotlinx.android.synthetic.main.shopping_cart.*
 
 class CheckoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,13 +21,13 @@ class CheckoutActivity : AppCompatActivity() {
         // add behavior to bottom nav bar
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.item1 -> {
+                R.id.item_pizzerias -> {
                     // Respond to navigation item 1 click
                     val intent = Intent(this, PizzeriaListActivity::class.java)
                     startActivity(intent)
                     true
                 }
-                R.id.item2 -> {
+                R.id.item_shopping_cart -> {
                     // Respond to navigation item 2 click
                     val intent = Intent(this, ShoppingCartActivity::class.java)
                     startActivity(intent)

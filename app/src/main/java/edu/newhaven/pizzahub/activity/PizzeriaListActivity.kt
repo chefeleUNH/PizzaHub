@@ -55,11 +55,11 @@ class PizzeriaListActivity : AppCompatActivity(), PizzeriaAdapter.OnDataChanged 
         // add behavior to bottom nav bar
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.item1 -> {
+                R.id.item_pizzerias -> {
                     // Do nothing as this activity is already running
                     true
                 }
-                R.id.item2 -> {
+                R.id.item_shopping_cart -> {
                     // Respond to navigation item 2 click
                     val intent = Intent(this, ShoppingCartActivity::class.java)
                     startActivity(intent)
