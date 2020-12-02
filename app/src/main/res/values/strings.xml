@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">pizzahub-android-fall20</string>
-    <string name="text_label_1">Pizzerias</string>
-    <string name="text_label_2">Shopping Cart</string>
+    <string name="text_label_pizzerias">Pizzerias</string>
+    <string name="text_label_shopping_cart">Shopping Cart</string>
 </resources>
