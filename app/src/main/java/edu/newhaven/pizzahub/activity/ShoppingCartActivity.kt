@@ -31,6 +31,7 @@ class ShoppingCartActivity : AppCompatActivity() {
         }
 
         // add behavior to bottom nav bar
+        bottom_navigation.selectedItemId = R.id.item2
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.item1 -> {
