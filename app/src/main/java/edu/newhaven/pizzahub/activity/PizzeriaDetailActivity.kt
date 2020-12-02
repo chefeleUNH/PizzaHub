@@ -15,7 +15,7 @@ import edu.newhaven.pizzahub.controller.MenuItemAdapter
 import edu.newhaven.pizzahub.glide.GlideApp
 import edu.newhaven.pizzahub.model.MenuItem
 import edu.newhaven.pizzahub.model.Pizzeria
-import kotlinx.android.synthetic.main.pizzeria_detail_view.*
+import kotlinx.android.synthetic.main.activity_pizzeria_detail.*
 
 class PizzeriaDetailActivity : AppCompatActivity() {
 
@@ -25,7 +25,7 @@ class PizzeriaDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pizzeria_detail_view)
+        setContentView(R.layout.activity_pizzeria_detail)
 
         // get the pizzeria from the intent
         val pizzeria = intent.getSerializableExtra("PIZZERIA") as? Pizzeria ?: return

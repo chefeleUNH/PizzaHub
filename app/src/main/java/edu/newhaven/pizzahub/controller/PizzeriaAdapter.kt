@@ -27,7 +27,7 @@ class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PizzeriaViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.pizzeria_list_row, parent, false)
+            .inflate(R.layout.row_pizzeria, parent, false)
         return PizzeriaViewHolder(view)
     }
 

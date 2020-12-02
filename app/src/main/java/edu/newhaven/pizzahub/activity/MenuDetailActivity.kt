@@ -11,12 +11,12 @@ import edu.newhaven.pizzahub.R
 import edu.newhaven.pizzahub.glide.GlideApp
 import edu.newhaven.pizzahub.model.MenuItem
 import edu.newhaven.pizzahub.model.ShoppingCart
-import kotlinx.android.synthetic.main.menu_detail_view.*
+import kotlinx.android.synthetic.main.activity_menu_detail.*
 
 class MenuDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.menu_detail_view)
+        setContentView(R.layout.activity_menu_detail)
 
         // get the menu item from the intent
         val menuItem = intent.getSerializableExtra("MENU_ITEM") as? MenuItem ?: return

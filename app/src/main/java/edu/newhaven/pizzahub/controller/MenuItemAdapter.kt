@@ -19,7 +19,7 @@ class MenuItemAdapter(options: FirestoreRecyclerOptions<MenuItem>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuItemViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.menu_list_row, parent, false)
+            .inflate(R.layout.row_menu, parent, false)
         return MenuItemViewHolder(view)
     }
 

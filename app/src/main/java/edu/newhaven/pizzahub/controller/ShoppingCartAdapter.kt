@@ -10,7 +10,7 @@ import edu.newhaven.pizzahub.view.ShoppingCartViewHolder
 class ShoppingCartAdapter(private val items: List<MenuItem>): RecyclerView.Adapter<ShoppingCartViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingCartViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.shopping_cart_row, parent, false)
+            .inflate(R.layout.row_shopping_cart, parent, false)
         return ShoppingCartViewHolder(view)
     }
 

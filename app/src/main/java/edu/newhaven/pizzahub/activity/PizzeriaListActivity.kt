@@ -16,7 +16,7 @@ import com.google.firebase.firestore.Query
 import edu.newhaven.pizzahub.R
 import edu.newhaven.pizzahub.controller.PizzeriaAdapter
 import edu.newhaven.pizzahub.model.Pizzeria
-import kotlinx.android.synthetic.main.pizzeria_list_view.*
+import kotlinx.android.synthetic.main.activity_pizzeria_list.*
 
 const val FINE_LOCATION_REQUEST_CODE = 0
 
@@ -32,7 +32,7 @@ class PizzeriaListActivity : AppCompatActivity(), PizzeriaAdapter.OnDataChanged 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pizzeria_list_view)
+        setContentView(R.layout.activity_pizzeria_list)
 
         // set the support action bar title
         supportActionBar?.title = title

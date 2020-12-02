@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import edu.newhaven.pizzahub.R
 import edu.newhaven.pizzahub.controller.ShoppingCartAdapter
 import edu.newhaven.pizzahub.model.ShoppingCart
-import kotlinx.android.synthetic.main.shopping_cart.*
+import kotlinx.android.synthetic.main.activity_shopping_cart.*
 
 class ShoppingCartActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class ShoppingCartActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.shopping_cart)
+        setContentView(R.layout.activity_shopping_cart)
 
         // set the support action bar title
         supportActionBar?.title = title
