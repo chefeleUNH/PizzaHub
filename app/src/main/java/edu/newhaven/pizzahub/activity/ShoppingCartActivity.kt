@@ -20,6 +20,11 @@ class ShoppingCartActivity : AppCompatActivity() {
         // set the support action bar title
         supportActionBar?.title = title
 
+        // disable place order button if cart is empty
+        if (ShoppingCart.items.isEmpty()) {
+            btn_place_order.isEnabled = false
+        }
+
         // configure the recycler view
         rv_cart.adapter = ShoppingCartAdapter(ShoppingCart.items)
         rv_cart.layoutManager = LinearLayoutManager(this)
