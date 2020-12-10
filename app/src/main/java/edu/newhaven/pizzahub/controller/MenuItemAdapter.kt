@@ -12,9 +12,10 @@ import edu.newhaven.pizzahub.R
 import edu.newhaven.pizzahub.activity.MenuDetailActivity
 import edu.newhaven.pizzahub.glide.GlideApp
 import edu.newhaven.pizzahub.model.MenuItem
+import edu.newhaven.pizzahub.model.Pizzeria
 import edu.newhaven.pizzahub.view.MenuItemViewHolder
 
-class MenuItemAdapter(options: FirestoreRecyclerOptions<MenuItem>) :
+class MenuItemAdapter(options: FirestoreRecyclerOptions<MenuItem>, private val pizzeria: Pizzeria) :
     FirestoreRecyclerAdapter<MenuItem, MenuItemViewHolder>(options) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuItemViewHolder {
@@ -29,6 +30,7 @@ class MenuItemAdapter(options: FirestoreRecyclerOptions<MenuItem>) :
             // load the detail view
             val intent = Intent(holder.itemView.context, MenuDetailActivity::class.java).apply {
                 putExtra("MENU_ITEM", model)
+                putExtra("PIZZERIA", pizzeria)
             }
             holder.itemView.context.startActivity(intent)
         }

@@ -2,4 +2,10 @@
     <string name="app_name">pizzahub-android-fall20</string>
     <string name="text_label_pizzerias">Pizzerias</string>
     <string name="text_label_shopping_cart">Shopping Cart</string>
+    <string name="ok">OK</string>
+    <string name="invalid_request">Invalid Request</string>
+    <string name="invalid_cart_item">The item you are trying to add to the shopping cart is from a different pizzeria. Only one pizzeria is allowed in the shopping cart at a time.</string>
+    <string name="order_confirmed">Order Confirmed</string>
+    <string name="thank_you">Your total was $%.2f - thank you!</string>
+    <string name="empty_shopping_cart">The shopping cart is empty</string>
 </resources>
