@@ -42,7 +42,7 @@ class MenuItemAdapter(options: FirestoreRecyclerOptions<MenuItem>, private val p
         circularProgressDrawable.start()
 
         // bind the menu item photo using the Glide generated API + Firebase UI Storage
-        val storageReference = Firebase.storage.getReferenceFromUrl(model.photo)
+        val storageReference = Firebase.storage.getReference(model.photo)
         GlideApp
             .with(holder.ivPhoto)
             .load(storageReference)

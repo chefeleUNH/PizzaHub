@@ -39,7 +39,7 @@ class MenuDetailActivity : AppCompatActivity() {
         circularProgressDrawable.start()
 
         // bind the menu item photo using the Glide generated API + Firebase UI Storage
-        val storageReference = Firebase.storage.getReferenceFromUrl(menuItem.photo)
+        val storageReference = Firebase.storage.getReference(menuItem.photo)
         GlideApp
             .with(this)
             .load(storageReference)

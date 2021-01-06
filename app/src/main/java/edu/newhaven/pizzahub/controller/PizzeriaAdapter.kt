@@ -48,7 +48,7 @@ class PizzeriaAdapter(options: FirestoreRecyclerOptions<Pizzeria>,
         circularProgressDrawable.start()
 
         // bind the pizzeria logo using the Glide generated API + Firebase UI Storage
-        val storageReference = Firebase.storage.getReferenceFromUrl(model.logo)
+        val storageReference = Firebase.storage.getReference(model.logo)
         GlideApp
             .with(holder.ivLogo)
             .load(storageReference)

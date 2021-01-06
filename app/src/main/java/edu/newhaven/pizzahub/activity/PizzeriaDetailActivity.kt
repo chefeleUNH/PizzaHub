@@ -43,7 +43,7 @@ class PizzeriaDetailActivity : AppCompatActivity() {
         circularProgressDrawable.start()
 
         // bind the pizzeria logo using the Glide generated API + Firebase UI Storage
-        val storageReference = Firebase.storage.getReferenceFromUrl(pizzeria.logo)
+        val storageReference = Firebase.storage.getReference(pizzeria.logo)
         GlideApp
             .with(this)
             .load(storageReference)
